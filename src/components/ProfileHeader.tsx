@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { ProfileInfo } from "@/types";
 
 interface ProfileHeaderProps {
@@ -18,13 +17,15 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ info }) => {
       {/* 아바타 이미지 영역: 딥 퍼플 투 마젠타 그라디언트 테두리로 감싸 트렌디함을 더합니다. */}
       <div className="relative w-28 h-28 rounded-full p-[3px] bg-gradient-to-tr from-brand-start to-brand-end shadow-md transition-transform duration-500 hover:scale-105">
         <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
-          <Image
+          {/* 
+            구글 시트 백오피스로부터 다양한 외부 이미지 URL이 들어올 수 있으므로,
+            도메인 제약 및 빌드 차단이 없는 표준 img 태그를 활용해 이미지 로딩 유연성을 확보합니다.
+          */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={profileImg}
             alt={`${name} 프로필 이미지`}
-            fill
-            sizes="112px"
-            priority
-            className="object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
