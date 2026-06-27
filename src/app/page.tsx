@@ -31,8 +31,8 @@ export default function Home() {
         setProfileInfo(profile);
         setLinkCards(cards);
 
-        // 브라우저 탭 타이틀도 구글 시트에서 가져온 이름으로 실시간 동적 맵핑합니다.
-        if (profile && profile.name) {
+        // 브라우저 탭 타이틀도 구글 시트에서 가져온 이름으로 실시간 동적 맵핑합니다. (서버 사이드 빌드 에러 방지)
+        if (typeof window !== "undefined" && profile && profile.name) {
           document.title = `${profile.name} | 공식 멀티링크 프로필`;
         }
       } catch (error) {
